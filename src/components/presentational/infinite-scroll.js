@@ -25,7 +25,12 @@ export default class InfiniteScroll extends Component{
 		return (window.innerHeight + window.scrollY >= window.containerRef.offsetTop);
 	}
 
+	shouldComponentUpdate(nextProps, nextState){
+		return nextProps.isLoading !== this.props.isLoading;
+	}
+
 	componentWillUpdate(nextProps){
+		console.log('will update');
 		if(!nextProps.isLoading){
 
 			onscroll = onscroll.bind(this);
